@@ -1,0 +1,66 @@
+name: Auto-merge Dependency Updates
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  auto-merge-deps:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+
+    steps:
+      - name: Check if PR is approved and CI passed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            // Get the PR title to check if it's a patch update
+            const title = pr.title.toLowerCase();
+            const isPatchUpdate = title.includes('patch') ||
+                                 title.match(/bump .* from .* to .*\.\d+\.\d+$/);
+
+            // Check CI status
+            const { data: checkRuns } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: pr.head.sha,
+            });
+
+            const allChecksCompleted = checkRuns.check_runs.every(check =>
+              check.status === 'completed'
+            );
+
+            const allChecksPassed = checkRuns.check_runs.every(check =>
+              check.conclusion === 'success' || check.conclusion === 'neutral'
+            );
+
+            if (isPatchUpdate && allChecksCompleted && allChecksPassed) {
+              // Auto-approve patch updates
+              await github.rest.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                event: 'APPROVE',
+                body: '🤖 Auto-approving patch dependency update'
+              });
+
+              // Auto-merge
+              await github.rest.pulls.merge({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+                commit_title: pr.title,
+                commit_message: 'Auto-merged by dependabot workflow',
+                merge_method: 'squash'
+              });
+
+              console.log('✅ Auto-merged patch dependency update');
+            } else {
+              console.log('ℹ️ Skipping auto-merge: not a patch update or CI not passed');
+            }
