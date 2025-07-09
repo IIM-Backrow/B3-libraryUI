@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
-    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix"
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "test": "react-scripts test",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
   },
   "homepage": "https://github.com/IIM-Backrow/B3-libraryUI#readme",
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
     "@typescript-eslint/parser": "^8.36.0",
@@ -30,8 +34,13 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-storybook": "^9.0.16",
+    "jest": "^30.0.4",
     "prettier": "^3.6.2",
     "react": "^19.1.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "storybook": "^9.0.16"
   }
 }
