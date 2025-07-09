@@ -1,15 +1,17 @@
 {
   "name": "b3-libraryui",
-  "version": "1.0.0",
+  "version": "0.0.1-beta.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
-    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
-    "test": "react-scripts test",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "format": "prettier --write --parser typescript 'src/**/*.{ts,tsx}'",
+    "lint": "eslint src --ext .ts,.tsx",
+    "build": "rollup -c --bundleConfigAsCjs",
+    "prepare": "npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,15 @@
   },
   "homepage": "https://github.com/IIM-Backrow/B3-libraryUI#readme",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.6",
+    "@rollup/plugin-node-resolve": "^16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@storybook/react": "^8.6.14",
+    "@storybook/test": "^8.6.14",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^30.0.0",
     "@types/react": "^19.1.8",
     "@typescript-eslint/eslint-plugin": "^8.36.0",
@@ -33,14 +44,40 @@
     "eslint-plugin-prettier": "^5.5.1",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-storybook": "^9.0.16",
-    "jest": "^30.0.4",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "prettier": "^3.6.2",
-    "react": "^19.1.0",
+    "rollup": "^4.44.2",
+    "rollup-plugin-dts": "^6.2.1",
+    "rollup-plugin-import-css": "^4.0.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "storybook": "^8.6.14",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "storybook": "^9.0.16"
+    "react": "^19.1.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+    },
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
