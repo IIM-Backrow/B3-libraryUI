@@ -8,6 +8,7 @@
   "scripts": {
     "format": "prettier --write --parser typescript 'src/**/*.{ts,tsx}'",
     "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
     "build": "rollup -c --bundleConfigAsCjs",
     "prepare": "npm run build",
     "test": "jest",
