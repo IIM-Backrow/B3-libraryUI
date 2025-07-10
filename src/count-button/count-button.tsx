@@ -1,4 +1,4 @@
-import React, { useState, CSSProperties } from "react";
+import React, { useState, CSSProperties, useRef } from "react";
 import "./count-button.css";
 
 export interface CountButtonProps {
@@ -6,20 +6,22 @@ export interface CountButtonProps {
   style?: CSSProperties;
 }
 
-export const CountButton: React.FC<CountButtonProps> = ({ label = "Compteur", style }) => {
+export default function CountButton({ label = "Compteur", style }: CountButtonProps) {
   const [count, setCount] = useState(0);
   const [animate, setAnimate] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const handleClick = () => {
     setCount((c) => c + 1);
     setAnimate(false);
     // Force reflow pour relancer l'animation
-    void document.getElementById("crazy-btn")?.offsetWidth;
+    void buttonRef.current?.offsetWidth;
     setAnimate(true);
   };
 
   return (
     <button
+      ref={buttonRef}
       id="crazy-btn"
       className={`crazy-btn${animate ? " crazy-animate" : ""}`}
       onClick={handleClick}
@@ -29,6 +31,4 @@ export const CountButton: React.FC<CountButtonProps> = ({ label = "Compteur", st
       {label} : {count}
     </button>
   );
-};
-
-export default CountButton;
+}
