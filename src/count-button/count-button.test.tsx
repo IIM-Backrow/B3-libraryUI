@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import { CountButton } from "./count-button";
+import CountButton from "./count-button";
 
 describe("CountButton", () => {
-  it("incrémente le compteur et applique l'animation au clic", () => {
-    const { getByRole } = render(<CountButton />);
+  it("increments the counter and applies the animation on click", () => {
+    const { getByText, getByRole } = render(<CountButton />);
     const button = getByRole("button");
     expect(button.textContent).toContain("0");
     fireEvent.click(button);
