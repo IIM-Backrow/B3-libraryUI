@@ -4,7 +4,7 @@ import { CountButton } from "./count-button";
 
 describe("CountButton", () => {
   it("incrémente le compteur et applique l'animation au clic", () => {
-    const { getByText, getByRole } = render(<CountButton />);
+    const { getByRole } = render(<CountButton />);
     const button = getByRole("button");
     expect(button.textContent).toContain("0");
     fireEvent.click(button);
