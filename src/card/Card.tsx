@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.css";
+import "./card.css";
 
 export interface CardProps {
     children: React.ReactNode;
@@ -10,23 +10,21 @@ export interface CardProps {
     className?: string;
 }
 
-const Card: React.FC<CardProps> = ({
+export default function Card({
     children,
     variant = "static-rainbow",
     size = "medium",
     onClick,
     disabled = false,
     className = "",
-}) => {
+}: CardProps) {
     return (
         <div
             className={`card card-${variant} card-${size} ${className}`}
-            onClick={onClick}
+            onClick={disabled ? undefined : onClick}
             aria-disabled={disabled}
         >
             {children}
         </div>
     );
-};
-
-export default Card;
+}
