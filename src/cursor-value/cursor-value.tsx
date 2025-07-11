@@ -10,14 +10,7 @@ export interface CursorValueProps {
   className?: string;
 }
 
-export default function CursorValue({
-  min,
-  max,
-  step = 1,
-  value,
-  onChange,
-  className = ""
-}: CursorValueProps) {
+export default function CursorValue({ min, max, step = 1, value, onChange, className = "" }: CursorValueProps) {
   const [internalValue, setInternalValue] = useState<number>(value ?? min);
   const [isRunning, setIsRunning] = useState(false);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
@@ -40,10 +33,7 @@ export default function CursorValue({
   useEffect(() => {
     if (isRunning && direction) {
       intervalRef.current = setInterval(() => {
-        let next =
-          direction === "left"
-            ? valueRef.current - step
-            : valueRef.current + step;
+        let next = direction === "left" ? valueRef.current - step : valueRef.current + step;
 
         next = Math.max(min, Math.min(max, next));
 
@@ -95,13 +85,9 @@ export default function CursorValue({
       aria-orientation="horizontal"
     >
       <div className="cursor-value-track">
-        <div
-          className="cursor-value-thumb"
-          style={{ left: `${((internalValue - min) / (max - min)) * 100}%` }}
-        />
+        <div className="cursor-value-thumb" style={{ left: `${((internalValue - min) / (max - min)) * 100}%` }} />
       </div>
       <div className="cursor-value-value">{internalValue}</div>
     </div>
   );
 }
-

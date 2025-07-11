@@ -38,7 +38,7 @@ export const DynamicRainbow: Story = {
     variant: "dynamic-rainbow",
     children: "Dynamic Rainbow Card",
     size: "medium"
-    }
+  }
 };
 export const Small: Story = {
   args: {
