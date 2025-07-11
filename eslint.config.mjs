@@ -5,6 +5,7 @@ import tsParser from "@typescript-eslint/parser";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import prettierPlugin from "eslint-plugin-prettier";
+import globals from "globals";
 
 export default [
   eslint.configs.recommended,
@@ -16,10 +17,9 @@ export default [
         sourceType: "module"
       },
       globals: {
-        // Browser environment
-        document: "readonly",
-        navigator: "readonly",
-        window: "readonly",
+        ...globals.browser,
+        ...globals.node,
+
         // Jest globals
         describe: "readonly",
         it: "readonly",
