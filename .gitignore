@@ -1,3 +1,8 @@
 node_modules/
 dist/
 *storybook.log
+.env
+build-storybook.log
+chromatic.log
+chromatic-build-*.xml
+chromatic-diagnostics.json
