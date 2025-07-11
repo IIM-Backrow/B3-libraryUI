@@ -7,19 +7,8 @@ export interface SpinnerProps {
   className?: string;
 }
 
-export default function Spinner({
-  size = "medium",
-  type = "line",
-  className = ""
-}: SpinnerProps) {
-  const classNames = [
-    "spinner",
-    `spinner-${size}`,
-    `spinner-${type}`,
-    className
-  ]
-    .filter(Boolean)
-    .join(" ");
+export default function Spinner({ size = "medium", type = "line", className = "" }: SpinnerProps) {
+  const classNames = ["spinner", `spinner-${size}`, `spinner-${type}`, className].filter(Boolean).join(" ");
 
   if (type === "dots") {
     return (
@@ -31,7 +20,5 @@ export default function Spinner({
     );
   }
 
-  return (
-    <div className={classNames} role="status" aria-label="Loading"></div>
-  );
+  return <div className={classNames} role="status" aria-label="Loading"></div>;
 }

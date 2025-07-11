@@ -20,26 +20,26 @@ describe("AvatarRolling", () => {
 
   it("moves after a short delay", () => {
     jest.useFakeTimers();
-    
+
     render(<AvatarRolling minSpeed={2} maxSpeed={2} avatar={AVATAR_URL} />);
     const container = document.querySelector(".avatar-rolling") as HTMLElement;
-    
+
     // Get initial transform (should be empty or default)
     const initialTransform = container.style.transform || "";
-    
+
     // Advance timers and wrap in act() to handle React state updates
     act(() => {
       jest.advanceTimersByTime(100);
     });
-    
+
     // Get transform after animation has had time to run
     const afterTransform = container.style.transform;
-    
+
     // The transform should now contain translate and rotate values
     expect(afterTransform).not.toBe(initialTransform);
     expect(afterTransform).toMatch(/translate\(-?\d+(\.\d+)?px,\s*-?\d+(\.\d+)?px\)/);
     expect(afterTransform).toMatch(/rotate\(-?\d+(\.\d+)?deg\)/);
-    
+
     jest.useRealTimers();
   });
 });

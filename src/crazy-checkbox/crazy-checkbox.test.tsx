@@ -45,9 +45,7 @@ describe("CrazyCheckbox Component", () => {
 
   it("works in controlled mode", () => {
     const handleChange = jest.fn();
-    const { rerender } = render(
-      <CrazyCheckbox checked={false} onChange={handleChange} />
-    );
+    const { rerender } = render(<CrazyCheckbox checked={false} onChange={handleChange} />);
 
     const checkbox = screen.getByRole("checkbox");
     expect(checkbox).not.toBeChecked();
@@ -124,7 +122,7 @@ describe("CrazyCheckbox Component", () => {
     act(() => {
       jest.advanceTimersByTime(2000);
     });
-    
+
     expect(screen.queryByText("Mission accomplished! 🎉")).not.toBeInTheDocument();
 
     jest.useRealTimers();

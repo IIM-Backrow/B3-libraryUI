@@ -32,18 +32,18 @@ export default function CrazyCheckbox({
 
   const createConfetti = () => {
     if (!containerRef.current) return;
-    
-    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f9ca24', '#f0932b', '#eb4d4b'];
-    
+
+    const colors = ["#ff6b6b", "#4ecdc4", "#45b7d1", "#f9ca24", "#f0932b", "#eb4d4b"];
+
     for (let i = 0; i < 12; i++) {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti-piece';
+      const confetti = document.createElement("div");
+      confetti.className = "confetti-piece";
       confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.left = Math.random() * 100 + '%';
-      confetti.style.animationDelay = Math.random() * 0.3 + 's';
-      
+      confetti.style.left = Math.random() * 100 + "%";
+      confetti.style.animationDelay = Math.random() * 0.3 + "s";
+
       containerRef.current.appendChild(confetti);
-      
+
       setTimeout(() => {
         if (confetti.parentNode) {
           confetti.parentNode.removeChild(confetti);
@@ -95,7 +95,7 @@ export default function CrazyCheckbox({
 
   const getContainerClasses = () => {
     const baseClasses = ["crazy-checkbox-container", className];
-    
+
     switch (clickCount) {
       case 1:
         baseClasses.push("stage-sparkle");
@@ -114,7 +114,7 @@ export default function CrazyCheckbox({
     }
 
     if (disabled) baseClasses.push("crazy-checkbox-disabled");
-    
+
     return baseClasses.filter(Boolean).join(" ");
   };
 
@@ -133,12 +133,8 @@ export default function CrazyCheckbox({
         <span className="crazy-checkbox-custom"></span>
         <span className="crazy-checkbox-text">{currentLabel}</span>
       </label>
-      
-      {showMessage && (
-        <div className="crazy-checkbox-message">
-          Mission accomplished! 🎉
-        </div>
-      )}
+
+      {showMessage && <div className="crazy-checkbox-message">Mission accomplished! 🎉</div>}
     </div>
   );
 }

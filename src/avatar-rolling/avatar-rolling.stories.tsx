@@ -24,11 +24,7 @@ const AVATAR_URL = "https://randomuser.me/api/portraits/men/32.jpg";
 const AVATAR_URL2 = "https://randomuser.me/api/portraits/women/44.jpg";
 const AVATAR_URL3 = "https://randomuser.me/api/portraits/men/65.jpg";
 
-const renderWithContainer = (
-  width = 300,
-  height = 200,
-  background = "#eee"
-) => {
+const renderWithContainer = (width = 300, height = 200, background = "#eee") => {
   const Wrapped = (args: React.ComponentProps<typeof AvatarRolling>) => (
     <div style={{ position: "relative", width, height, background, overflow: "hidden" }}>
       <AvatarRolling {...args} />
