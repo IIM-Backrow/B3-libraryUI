@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import CrazyCheckbox from "./crazy-checkbox";
+import { CrazyCheckbox } from "./crazy-checkbox";
 
 describe("CrazyCheckbox Component", () => {
   it("renders with default props", () => {

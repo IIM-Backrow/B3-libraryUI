@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import TextInput from "./text-input";
+import { TextInput } from "./text-input";
 
 describe("TextInput Component", () => {
   it("renders correctly with default props", () => {

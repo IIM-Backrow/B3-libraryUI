@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ToggleSwitch, { ToggleSwitchProps } from "./toggle-switch";
+import { ToggleSwitch, ToggleSwitchProps } from "./toggle-switch";
 
 describe("ToggleSwitch", () => {
   const defaultProps: ToggleSwitchProps = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import CountButton from "./count-button";
+import { CountButton } from "./count-button";
 
 describe("CountButton", () => {
   it("increments the counter and applies the animation on click", () => {
