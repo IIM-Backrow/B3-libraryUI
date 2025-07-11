@@ -9,7 +9,7 @@ export interface CountButtonProps {
 export default function CountButton({ label = "Compteur", style }: CountButtonProps) {
   const [count, setCount] = useState(0);
   const [animate, setAnimate] = useState(false);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<React.ComponentRef<"button">>(null);
 
   const handleClick = () => {
     setCount((c) => c + 1);
