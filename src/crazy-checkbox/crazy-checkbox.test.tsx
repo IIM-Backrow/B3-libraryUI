@@ -69,7 +69,7 @@ describe("CrazyCheckbox Component", () => {
 
     fireEvent.click(checkbox);
     expect(container).toHaveClass("stage-blink");
-    expect(screen.getByText("T'es sûr ?")).toBeInTheDocument();
+    expect(screen.getByText("Are you sure?")).toBeInTheDocument();
 
     fireEvent.click(checkbox);
     expect(container).toHaveClass("stage-explosion");
@@ -77,7 +77,7 @@ describe("CrazyCheckbox Component", () => {
 
     fireEvent.click(checkbox);
     expect(container).toHaveClass("stage-spin");
-    expect(screen.getByText("Ok t'as gagné 🙄")).toBeInTheDocument();
+    expect(screen.getByText("Ok you won 🙄")).toBeInTheDocument();
 
     fireEvent.click(checkbox);
     expect(container).not.toHaveClass("stage-sparkle");
@@ -118,14 +118,14 @@ describe("CrazyCheckbox Component", () => {
       fireEvent.click(checkbox);
     }
 
-    expect(screen.getByText("Mission accomplie! 🎉")).toBeInTheDocument();
+    expect(screen.getByText("Mission accomplished! 🎉")).toBeInTheDocument();
 
     // Use act to wrap the timer advancement
     act(() => {
       jest.advanceTimersByTime(2000);
     });
     
-    expect(screen.queryByText("Mission accomplie! 🎉")).not.toBeInTheDocument();
+    expect(screen.queryByText("Mission accomplished! 🎉")).not.toBeInTheDocument();
 
     jest.useRealTimers();
   });

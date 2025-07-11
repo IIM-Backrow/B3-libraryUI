@@ -70,14 +70,14 @@ export default function CrazyCheckbox({
         setCurrentLabel(label);
         break;
       case 2:
-        setCurrentLabel("T'es sûr ?");
+        setCurrentLabel("Are you sure?");
         break;
       case 3:
         createConfetti();
         setCurrentLabel("BOOM! 💥");
         break;
       case 4:
-        setCurrentLabel("Ok t'as gagné 🙄");
+        setCurrentLabel("Ok you won 🙄");
         setShowMessage(true);
         setTimeout(() => setShowMessage(false), 2000);
         break;
@@ -136,7 +136,7 @@ export default function CrazyCheckbox({
       
       {showMessage && (
         <div className="crazy-checkbox-message">
-          Mission accomplie! 🎉
+          Mission accomplished! 🎉
         </div>
       )}
     </div>

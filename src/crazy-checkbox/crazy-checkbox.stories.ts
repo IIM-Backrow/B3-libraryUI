@@ -29,7 +29,7 @@ export const Default: Story = {
 };
 export const CustomLabel: Story = {
   args: {
-    label: "Click pour devenir fou!"
+    label: "Click to go crazy!"
   }
 };
 export const DefaultChecked: Story = {
