@@ -14,14 +14,14 @@
 }
 
 .spinner-medium {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     border-width: 4px;
 }
 
 .spinner-large {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     border-width: 6px;
 }
 
