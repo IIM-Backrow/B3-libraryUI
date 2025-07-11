@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./crazy-checbox.css";
+import "./crazy-checkbox.css";
 
 export interface CrazyCheckboxProps {
   defaultChecked?: boolean;
