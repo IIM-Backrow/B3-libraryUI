@@ -19,7 +19,7 @@ export interface TextInputProps {
   required?: boolean;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
+export default function TextInput({
   label,
   helperText,
   error = false,
@@ -35,7 +35,7 @@ const TextInput: React.FC<TextInputProps> = ({
   name,
   id,
   required
-}) => {
+}: TextInputProps) {
   return (
     <div className={`text-input ${fullWidth ? "text-input-fullwidth" : ""} ${className}`}>
       {label && <label className={`text-input-label ${error ? "text-input-label-error" : ""}`}>{label}</label>}
@@ -60,6 +60,4 @@ const TextInput: React.FC<TextInputProps> = ({
       )}
     </div>
   );
-};
-
-export default TextInput;
+}
