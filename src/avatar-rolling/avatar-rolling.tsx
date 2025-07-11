@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import "./avatar-rolling.css";
 
 export interface AvatarRollingProps {
-  minSpeed: number; // tours/seconde
-  maxSpeed: number; // tours/seconde
-  avatar: string;   // url de l'image
+  minSpeed: number; // rotations/seconde
+  maxSpeed: number; // rotations/seconde
+  avatar: string;   // image URL
   size?: number;    // px
 }
 
@@ -23,8 +23,9 @@ export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarR
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [angle, setAngle] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const MOVEMENT_SPEED_MULTIPLIER = 40
 
-  // Change spin speed aléatoirement toutes les 1-3 secondes
+  // Change spin speed randomly every 1-3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setSpinSpeed(getRandomBetween(minSpeed, maxSpeed));
@@ -33,7 +34,7 @@ export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarR
     return () => clearInterval(interval);
   }, [minSpeed, maxSpeed]);
 
-  // Animation frame pour spin et déplacement
+  // Animation frame for spin and movement
   useEffect(() => {
     let lastTime = performance.now();
     let raf: number;
@@ -42,12 +43,12 @@ export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarR
       lastTime = now;
       // Spin
       setAngle(a => a + 360 * spinSpeed * dt);
-      // Déplacement (proportionnel à la vitesse de spin)
+      // Movement (proportional to spin speed)
       setPosition(pos => {
-        const speed = spinSpeed * 40; // px/sec
+        const speed = spinSpeed * MOVEMENT_SPEED_MULTIPLIER; // px/sec
         let nx = pos.x + direction.x * speed * dt;
         let ny = pos.y + direction.y * speed * dt;
-        // Rebond sur les bords du conteneur
+        // Bounce off container edges
         const parent = containerRef.current?.parentElement;
         if (parent) {
           const maxX = parent.clientWidth - size;
