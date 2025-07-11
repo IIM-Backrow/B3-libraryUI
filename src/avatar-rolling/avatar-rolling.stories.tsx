@@ -28,11 +28,15 @@ const renderWithContainer = (
   width = 300,
   height = 200,
   background = "#eee"
-) => (args: React.ComponentProps<typeof AvatarRolling>) => (
-  <div style={{ position: "relative", width, height, background, overflow: "hidden" }}>
-    <AvatarRolling {...args} />
-  </div>
-);
+) => {
+  const Wrapped = (args: React.ComponentProps<typeof AvatarRolling>) => (
+    <div style={{ position: "relative", width, height, background, overflow: "hidden" }}>
+      <AvatarRolling {...args} />
+    </div>
+  );
+  Wrapped.displayName = "AvatarRollingStoryContainer";
+  return Wrapped;
+};
 
 export const Slow: Story = {
   args: {
