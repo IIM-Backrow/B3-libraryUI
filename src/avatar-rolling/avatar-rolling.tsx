@@ -5,8 +5,8 @@ import "./avatar-rolling.css";
 export interface AvatarRollingProps {
   minSpeed: number; // rotations/seconde
   maxSpeed: number; // rotations/seconde
-  avatar: string;   // image URL
-  size?: number;    // px
+  avatar: string; // image URL
+  size?: number; // px
 }
 
 export default function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarRollingProps) {
@@ -15,14 +15,17 @@ export default function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }:
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [angle, setAngle] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const MOVEMENT_SPEED_MULTIPLIER = 40
+  const MOVEMENT_SPEED_MULTIPLIER = 40;
 
   // Change spin speed randomly every 1-3 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSpinSpeed(getRandomBetween(minSpeed, maxSpeed));
-      setDirection(getRandomDirection());
-    }, getRandomBetween(1000, 3000));
+    const interval = setInterval(
+      () => {
+        setSpinSpeed(getRandomBetween(minSpeed, maxSpeed));
+        setDirection(getRandomDirection());
+      },
+      getRandomBetween(1000, 3000)
+    );
     return () => clearInterval(interval);
   }, [minSpeed, maxSpeed]);
 
@@ -34,9 +37,9 @@ export default function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }:
       const dt = (now - lastTime) / 1000;
       lastTime = now;
       // Spin
-      setAngle(a => a + 360 * spinSpeed * dt);
+      setAngle((a) => a + 360 * spinSpeed * dt);
       // Movement (proportional to spin speed)
-      setPosition(pos => {
+      setPosition((pos) => {
         const speed = spinSpeed * MOVEMENT_SPEED_MULTIPLIER; // px/sec
         let nx = pos.x + direction.x * speed * dt;
         let ny = pos.y + direction.y * speed * dt;
