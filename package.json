@@ -1,6 +1,6 @@
 {
-  "name": "b3-libraryui",
-  "version": "0.0.1-beta.1",
+  "name": "@iim-backrow/b3-libraryui",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
