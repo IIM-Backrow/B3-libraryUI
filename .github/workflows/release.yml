@@ -27,11 +27,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create GitHub App Token
+        uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.RELEASE_BOT_APP_ID }}
+          private-key: ${{ secrets.RELEASE_BOT_PRIVATE_KEY }}
+
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -72,8 +79,8 @@ jobs:
       - name: Bump version (manual dispatch)
         if: github.event_name == 'workflow_dispatch'
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "github-actions"
           npm version ${{ github.event.inputs.release_type }} --no-git-tag-version
           NEW_VERSION=$(jq -r '.version' package.json)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -86,7 +93,7 @@ jobs:
         if: steps.version_check.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
           tag_name: v${{ steps.version_check.outputs.new_version || steps.manual_version.outputs.new_version }}
           release_name:
