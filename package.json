@@ -21,9 +21,15 @@
     "type": "git",
     "url": "git+https://github.com/IIM-Backrow/B3-libraryUI.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "react",
+    "components",
+    "library",
+    "ui",
+    "wtf"
+  ],
+  "author": "IIM-Backrow",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/IIM-Backrow/B3-libraryUI/issues"
