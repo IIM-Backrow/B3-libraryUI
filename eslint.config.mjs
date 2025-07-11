@@ -46,7 +46,8 @@ export default [
       ...tseslint.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
       ...reactHooksPlugin.configs.recommended.rules,
-      ...prettierPlugin.configs.recommended.rules
+      ...prettierPlugin.configs.recommended.rules,
+      "react/react-in-jsx-scope": "off"
     }
   }
 ];
