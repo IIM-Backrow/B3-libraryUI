@@ -1,0 +1,47 @@
+.card {
+    font-family: sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+    background-color: white;
+}
+.card:hover {
+    filter: brightness(0.85);
+}
+.card-static-rainbow {
+    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+}
+.card-dynamic-rainbow {
+    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
+    background-size: 300% 100%;
+    animation: rainbow 5s linear infinite;
+}
+.card-medium{
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+
+}
+.card-large{
+    width: 375px;
+    height: 375px;
+    border-radius: 15px;
+
+}
+.card-small{
+    width: 125px;
+    height: 125px;
+    border-radius: 5px;
+
+}
+@keyframes rainbow {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
+}
