@@ -10,7 +10,7 @@ export interface CursorValueProps {
   className?: string;
 }
 
-function CursorValue({
+export default function CursorValue({
   min,
   max,
   step = 1,
