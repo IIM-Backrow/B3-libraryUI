@@ -10,7 +10,6 @@ This directory contains GitHub Actions workflows for the B3 Library UI project.
 
 **Steps:**
 
-- Format checking (`prettier --check`)
 - Linting (`eslint`)
 - Type checking (`tsc --noEmit`)
 - Testing with coverage (`jest`)
