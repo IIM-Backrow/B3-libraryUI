@@ -6,7 +6,7 @@ const meta: Meta<typeof CursorValue> = {
   title: "Components/CursorValue",
   component: CursorValue,
   parameters: {
-    layout: "centered",
+    layout: "centered"
   },
   tags: ["autodocs"],
   argTypes: {
@@ -14,8 +14,8 @@ const meta: Meta<typeof CursorValue> = {
     max: { control: { type: "number" } },
     step: { control: { type: "number" } },
     value: { control: { type: "number" } },
-    onChange: { action: "changed" },
-  },
+    onChange: { action: "changed" }
+  }
 };
 
 export default meta;
@@ -42,8 +42,8 @@ export const Default: Story = {
     min: 0,
     max: 100,
     step: 1,
-    value: 50,
-  },
+    value: 50
+  }
 };
 
 export const SmallSteps: Story = {
@@ -52,8 +52,8 @@ export const SmallSteps: Story = {
     min: 0,
     max: 10,
     step: 0.1,
-    value: 5,
-  },
+    value: 5
+  }
 };
 
 export const LargeRange: Story = {
@@ -62,6 +62,6 @@ export const LargeRange: Story = {
     min: -100,
     max: 100,
     step: 5,
-    value: 0,
-  },
+    value: 0
+  }
 };
