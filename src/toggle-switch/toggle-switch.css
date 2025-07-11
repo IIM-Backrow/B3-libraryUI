@@ -1,0 +1,108 @@
+.toggle-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: inherit;
+}
+
+.toggle-switch__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary, #333);
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-switch__track {
+  position: relative;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+  display: flex;
+  align-items: center;
+  background-color: var(--gray-300, #d1d5db);
+}
+
+.toggle-switch__track:focus-visible {
+  box-shadow: 0 0 0 3px var(--focus-ring, rgba(0, 123, 255, 0.25));
+}
+
+.toggle-switch__thumb {
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-switch--small .toggle-switch__track { width: 2.25rem; height: 1.25rem; }
+.toggle-switch--small .toggle-switch__thumb { width: 1rem; height: 1rem; margin: 0.125rem; }
+.toggle-switch--medium .toggle-switch__track { width: 2.75rem; height: 1.5rem; }
+.toggle-switch--medium .toggle-switch__thumb { width: 1.25rem; height: 1.25rem; margin: 0.125rem; }
+.toggle-switch--large .toggle-switch__track { width: 3.25rem; height: 1.75rem; }
+.toggle-switch--large .toggle-switch__thumb { width: 1.5rem; height: 1.5rem; margin: 0.125rem; }
+
+.toggle-switch--checked.toggle-switch--primary .toggle-switch__track { background-color: var(--primary, #007bff); }
+.toggle-switch--checked.toggle-switch--secondary .toggle-switch__track { background-color: var(--secondary, #6c757d); }
+.toggle-switch--checked.toggle-switch--success .toggle-switch__track { background-color: var(--success, #28a745); }
+.toggle-switch--checked.toggle-switch--warning .toggle-switch__track { background-color: var(--warning, #ffc107); }
+.toggle-switch--checked.toggle-switch--danger .toggle-switch__track { background-color: var(--danger, #dc3545); }
+
+.toggle-switch--checked.toggle-switch--small .toggle-switch__thumb { transform: translateX(1rem); }
+.toggle-switch--checked.toggle-switch--medium .toggle-switch__thumb { transform: translateX(1.25rem); }
+.toggle-switch--checked.toggle-switch--large .toggle-switch__thumb { transform: translateX(1.5rem); }
+
+.toggle-switch--disabled { opacity: 0.6; }
+.toggle-switch--disabled .toggle-switch__track, 
+.toggle-switch--disabled .toggle-switch__label { cursor: not-allowed; }
+
+.toggle-switch__track:hover:not([aria-disabled="true"]) {
+  transform: scale(1.02);
+}
+
+.toggle-switch__track:hover:not([aria-disabled="true"]) .toggle-switch__thumb {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-switch__track:active:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(0.95);
+}
+
+.toggle-switch--checked.toggle-switch--small .toggle-switch__track:active:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(0.95) translateX(1rem);
+}
+.toggle-switch--checked.toggle-switch--medium .toggle-switch__track:active:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(0.95) translateX(1.25rem);
+}
+.toggle-switch--checked.toggle-switch--large .toggle-switch__track:active:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(0.95) translateX(1.5rem);
+}
+/* Enhanced hover effect (doubled) */
+.toggle-switch__track:hover:not([aria-disabled="true"]) {
+  transform: scale(2);
+  transition: transform 0.2s ease-out;
+}
+
+.toggle-switch__track:hover:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Handle hover states when checked */
+.toggle-switch--checked .toggle-switch__track:hover:not([aria-disabled="true"]) .toggle-switch__thumb {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.toggle-switch--checked.toggle-switch--small .toggle-switch__track:hover:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(2) translateX(1rem);
+}
+
+.toggle-switch--checked.toggle-switch--medium .toggle-switch__track:hover:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(2.2) translateX(1.25rem);
+}
+
+.toggle-switch--checked.toggle-switch--large .toggle-switch__track:hover:not([aria-disabled="true"]) .toggle-switch__thumb {
+  transform: scale(2.4) translateX(1.5rem);
+}
