@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { getRandomBetween, getRandomDirection } from "../utils";
 import "./avatar-rolling.css";
 
 export interface AvatarRollingProps {
@@ -8,16 +9,7 @@ export interface AvatarRollingProps {
   size?: number;    // px
 }
 
-function getRandomBetween(a: number, b: number) {
-  return a + Math.random() * (b - a);
-}
-
-function getRandomDirection() {
-  const angle = Math.random() * 2 * Math.PI;
-  return { x: Math.cos(angle), y: Math.sin(angle) };
-}
-
-export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarRollingProps) {
+export default function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarRollingProps) {
   const [spinSpeed, setSpinSpeed] = useState(() => getRandomBetween(minSpeed, maxSpeed));
   const [direction, setDirection] = useState(() => getRandomDirection());
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -55,11 +47,11 @@ export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarR
           const maxY = parent.clientHeight - size;
           if (nx < 0 || nx > maxX) {
             nx = Math.max(0, Math.min(maxX, nx));
-            setDirection(d => ({ ...d, x: -d.x }));
+            setDirection((d: typeof direction) => ({ ...d, x: -d.x }));
           }
           if (ny < 0 || ny > maxY) {
             ny = Math.max(0, Math.min(maxY, ny));
-            setDirection(d => ({ ...d, y: -d.y }));
+            setDirection((d: typeof direction) => ({ ...d, y: -d.y }));
           }
         }
         return { x: nx, y: ny };
@@ -90,5 +82,3 @@ export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarR
     </div>
   );
 }
-
-export default AvatarRolling;
