@@ -10,7 +10,7 @@ export interface CardProps {
   className?: string;
 }
 
-export default function Card({
+export function Card({
   children,
   variant = "static-rainbow",
   size = "medium",

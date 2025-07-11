@@ -10,7 +10,7 @@ export interface CursorValueProps {
   className?: string;
 }
 
-export default function CursorValue({ min, max, step = 1, value, onChange, className = "" }: CursorValueProps) {
+export function CursorValue({ min, max, step = 1, value, onChange, className = "" }: CursorValueProps) {
   const [internalValue, setInternalValue] = useState<number>(value ?? min);
   const [isRunning, setIsRunning] = useState(false);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);

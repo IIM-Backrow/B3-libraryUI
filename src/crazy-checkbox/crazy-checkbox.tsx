@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import "./crazy-checkbox.css";
 
 export interface CrazyCheckboxProps {
@@ -11,7 +11,7 @@ export interface CrazyCheckboxProps {
   id?: string;
 }
 
-export default function CrazyCheckbox({
+export function CrazyCheckbox({
   defaultChecked = false,
   checked,
   onChange,

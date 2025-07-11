@@ -19,7 +19,7 @@ export interface TextInputProps {
   required?: boolean;
 }
 
-export default function TextInput({
+export function TextInput({
   label,
   helperText,
   error = false,

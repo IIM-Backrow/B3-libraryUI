@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./toggle-switch.css";
 
 export interface ToggleSwitchProps {
@@ -13,7 +13,7 @@ export interface ToggleSwitchProps {
   testId?: string;
 }
 
-export default function ToggleSwitch({
+export function ToggleSwitch({
   defaultChecked = false,
   checked,
   onChange,

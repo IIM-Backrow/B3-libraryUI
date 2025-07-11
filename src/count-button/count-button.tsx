@@ -6,7 +6,7 @@ export interface CountButtonProps {
   style?: CSSProperties;
 }
 
-export default function CountButton({ label = "Compteur", style }: CountButtonProps) {
+export function CountButton({ label = "Compteur", style }: CountButtonProps) {
   const [count, setCount] = useState(0);
   const [animate, setAnimate] = useState(false);
   const buttonRef = useRef<React.ComponentRef<"button">>(null);

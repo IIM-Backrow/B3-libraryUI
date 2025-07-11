@@ -1,4 +1,3 @@
-import React from "react";
 import "./spinner.css";
 
 export interface SpinnerProps {
@@ -7,7 +6,7 @@ export interface SpinnerProps {
   className?: string;
 }
 
-export default function Spinner({ size = "medium", type = "line", className = "" }: SpinnerProps) {
+export function Spinner({ size = "medium", type = "line", className = "" }: SpinnerProps) {
   const classNames = ["spinner", `spinner-${size}`, `spinner-${type}`, className].filter(Boolean).join(" ");
 
   if (type === "dots") {

@@ -9,7 +9,7 @@ export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>
   className?: string;
 }
 
-export default function Link({ to, children, external = false, onClick, className, ...rest }: LinkProps) {
+export function Link({ to, children, external = false, onClick, className, ...rest }: LinkProps) {
   return (
     <a
       href={to}
