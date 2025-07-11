@@ -79,5 +79,3 @@ export function ToggleSwitch({
     </div>
   );
 }
-
-export { ToggleSwitch };
