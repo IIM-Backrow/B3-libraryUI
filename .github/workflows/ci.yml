@@ -63,5 +63,5 @@ jobs:
       - name: Test package installation
         run: |
           npm pack
-          npm install -g ./b3-libraryui-*.tgz
+          npm install -g ./iim-backrow-b3-libraryui-*.tgz
           echo "✅ Package can be installed successfully"
