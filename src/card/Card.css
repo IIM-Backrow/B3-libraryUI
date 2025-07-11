@@ -12,11 +12,11 @@
     filter: brightness(0.85);
 }
 .card-static-rainbow {
-    background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+    background: linear-gradient(45deg, red, rgb(255,127,0), yellow, rgb(127,255,0), rgb(0,255,0), rgb(0,255,127), rgb(0,255,255), rgb(0,127,255), blue, rgb(127,0,255), rgb(255,0,255), rgb(255,0,127));
 }
 .card-dynamic-rainbow {
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet, red);
-    background-size: 300% 100%;
+    background: linear-gradient(90deg, red, rgb(255,127,0), yellow, rgb(127,255,0), rgb(0,255,0), rgb(0,255,127), rgb(0,255,255), rgb(0,127,255), blue, rgb(127,0,255), rgb(255,0,255), rgb(255,0,127), red);
+    background-size: 300%;
     animation: rainbow 5s linear infinite;
 }
 .card-medium{
@@ -39,9 +39,9 @@
 }
 @keyframes rainbow {
     0% {
-        background-position: 0% 50%;
+        background-position: 0%;
     }
     100% {
-        background-position: 300% 50%;
+        background-position: 300%;
     }
 }
