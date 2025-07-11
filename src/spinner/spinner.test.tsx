@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Spinner from "./spinner";
+import { Spinner } from "./spinner";
 
 describe("Spinner Component", () => {
   it("renders with default props", () => {

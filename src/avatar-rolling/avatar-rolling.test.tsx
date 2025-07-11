@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, act } from "@testing-library/react";
-import AvatarRolling from "./avatar-rolling";
+import { AvatarRolling } from "./avatar-rolling";
 
 const AVATAR_URL = "https://randomuser.me/api/portraits/men/32.jpg";
 

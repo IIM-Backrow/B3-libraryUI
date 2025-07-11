@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Link from "./link";
+import { Link } from "./link";
 
 describe("Link component", () => {
   it("renders the link with correct href", () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import CursorValue from "./cursor-value";
+import { CursorValue } from "./cursor-value";
 import { act } from "react";
 
 // Test basique : rendu et changement de valeur
