@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import CrazyCheckbox from "./crazy-checkbox";
+import { CrazyCheckbox } from "./crazy-checkbox";
 
 const meta = {
   title: "Components/CrazyCheckbox",
