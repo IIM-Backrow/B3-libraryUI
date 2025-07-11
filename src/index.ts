@@ -8,3 +8,4 @@ export * from "./link/link";
 export * from "./spinner/spinner";
 export * from "./text-input/text-input";
 export * from "./toggle-switch/toggle-switch";
+export  * from "./test-component/test-component";
