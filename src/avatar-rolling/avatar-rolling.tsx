@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getRandomBetween, getRandomDirection } from "../utils";
 import "./avatar-rolling.css";
 
@@ -9,7 +9,7 @@ export interface AvatarRollingProps {
   size?: number; // px
 }
 
-export default function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarRollingProps) {
+export function AvatarRolling({ minSpeed, maxSpeed, avatar, size = 80 }: AvatarRollingProps) {
   const [spinSpeed, setSpinSpeed] = useState(() => getRandomBetween(minSpeed, maxSpeed));
   const [direction, setDirection] = useState(() => getRandomDirection());
   const [position, setPosition] = useState({ x: 0, y: 0 });
