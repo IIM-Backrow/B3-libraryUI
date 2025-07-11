@@ -1,28 +1,7 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import CrazyCheckbox from "./crazy-checkbox";
-
-Object.defineProperty(window, 'AudioContext', {
-  writable: true,
-  value: jest.fn().mockImplementation(() => ({
-    createOscillator: jest.fn().mockReturnValue({
-      connect: jest.fn(),
-      frequency: { setValueAtTime: jest.fn() },
-      start: jest.fn(),
-      stop: jest.fn(),
-    }),
-    createGain: jest.fn().mockReturnValue({
-      connect: jest.fn(),
-      gain: {
-        setValueAtTime: jest.fn(),
-        exponentialRampToValueAtTime: jest.fn(),
-      },
-    }),
-    destination: {},
-    currentTime: 0,
-  })),
-});
 
 describe("CrazyCheckbox Component", () => {
   it("renders with default props", () => {
@@ -129,7 +108,7 @@ describe("CrazyCheckbox Component", () => {
     expect(handleChange).not.toHaveBeenCalled();
   });
 
-  it("shows victory message on fourth click", () => {
+  it("shows victory message on fourth click", async () => {
     jest.useFakeTimers();
     render(<CrazyCheckbox />);
     const checkbox = screen.getByRole("checkbox");
@@ -141,7 +120,11 @@ describe("CrazyCheckbox Component", () => {
 
     expect(screen.getByText("Mission accomplie! 🎉")).toBeInTheDocument();
 
-    jest.advanceTimersByTime(2000);
+    // Use act to wrap the timer advancement
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
+    
     expect(screen.queryByText("Mission accomplie! 🎉")).not.toBeInTheDocument();
 
     jest.useRealTimers();
