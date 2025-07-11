@@ -59,7 +59,8 @@ jobs:
       - name: Build library
         run: npm run build
 
-      - name: Check for version changes
+      - name: Check for version changes (push events only)
+        if: github.event_name == 'push'
         id: version_check
         run: |
           if git diff HEAD~1 HEAD --name-only | grep -q "package.json"; then
@@ -69,11 +70,14 @@ jobs:
               echo "version_changed=true" >> $GITHUB_OUTPUT
               echo "old_version=$OLD_VERSION" >> $GITHUB_OUTPUT
               echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+              echo "should_release=true" >> $GITHUB_OUTPUT
             else
               echo "version_changed=false" >> $GITHUB_OUTPUT
+              echo "should_release=false" >> $GITHUB_OUTPUT
             fi
           else
             echo "version_changed=false" >> $GITHUB_OUTPUT
+            echo "should_release=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Bump version (manual dispatch)
@@ -84,13 +88,15 @@ jobs:
           npm version ${{ github.event.inputs.release_type }} --no-git-tag-version
           NEW_VERSION=$(jq -r '.version' package.json)
           echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "should_release=true" >> $GITHUB_OUTPUT
           git add package.json package-lock.json
           git commit -m "chore: bump version to $NEW_VERSION"
           git push
         id: manual_version
 
       - name: Create GitHub Release
-        if: steps.version_check.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
+        if:
+          steps.version_check.outputs.should_release == 'true' || steps.manual_version.outputs.should_release == 'true'
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
@@ -104,7 +110,8 @@ jobs:
             contains(steps.version_check.outputs.new_version || steps.manual_version.outputs.new_version, 'alpha') }}
 
       - name: Publish to npm
-        if: steps.version_check.outputs.version_changed == 'true' || github.event_name == 'workflow_dispatch'
+        if:
+          steps.version_check.outputs.should_release == 'true' || steps.manual_version.outputs.should_release == 'true'
         run: |
           if [[ "${{ steps.version_check.outputs.new_version || steps.manual_version.outputs.new_version }}" == *"beta"* ]] || [[ "${{ steps.version_check.outputs.new_version || steps.manual_version.outputs.new_version }}" == *"alpha"* ]]; then
             npm publish --tag beta
