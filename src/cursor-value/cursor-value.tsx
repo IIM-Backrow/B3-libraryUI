@@ -39,7 +39,7 @@ const CursorValue: React.FC<CursorValueProps> = ({
 
   useEffect(() => {
     if (isRunning && direction) {
-      intervalRef.current = setInterval(() => {
+      intervalRef.current = window.setInterval(() => {
         let next =
           direction === "left"
             ? valueRef.current - step
@@ -53,13 +53,13 @@ const CursorValue: React.FC<CursorValueProps> = ({
           if (onChange) onChange(next);
         }
       }, 50);
-    } else if (intervalRef.current) {
-      clearInterval(intervalRef.current);
+    } else if (intervalRef.current !== null) {
+      window.clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
 
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (intervalRef.current !== null) window.clearInterval(intervalRef.current);
     };
   }, [isRunning, direction, step, min, max, onChange]);
 
