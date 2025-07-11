@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import AvatarRolling from "./avatar-rolling";
+import React from "react";
 
 const meta: Meta<typeof AvatarRolling> = {
   title: "Components/AvatarRolling",
