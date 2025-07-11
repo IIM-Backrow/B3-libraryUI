@@ -22,7 +22,7 @@ const CursorValue: React.FC<CursorValueProps> = ({
   const [isRunning, setIsRunning] = useState(false);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<number | null>(null);
   const valueRef = useRef<number>(internalValue);
 
   // Sync external value
