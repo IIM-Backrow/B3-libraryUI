@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import Spinner from "./spinner";
 
-// Define metadata for the component
 const meta = {
   title: "Components/Spinner",
   component: Spinner,
@@ -25,49 +24,42 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Spinner>;
 
-// Define stories
 export const Default: Story = {
   args: {
     size: "medium",
     type: "line"
   }
 };
-
 export const Small: Story = {
   args: {
     size: "small",
     type: "line"
   }
 };
-
 export const SmallDots: Story = {
   args: {
     size: "small",
     type: "dots"
   }
 };
-
 export const Medium: Story = {
   args: {
     size: "medium",
     type: "line"
   }
 };
-
 export const MediumDots: Story = {
   args: {
     size: "medium",
     type: "dots"
   }
 };
-
 export const Large: Story = {
   args: {
     size: "large",
     type: "line"
   }
 };
-
 export const LargeDots: Story = {
   args: {
     size: "large",
