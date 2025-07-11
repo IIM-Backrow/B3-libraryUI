@@ -10,19 +10,19 @@ export interface CursorValueProps {
   className?: string;
 }
 
-const CursorValue: React.FC<CursorValueProps> = ({
+function CursorValue({
   min,
   max,
   step = 1,
   value,
   onChange,
   className = ""
-}) => {
+}: CursorValueProps) {
   const [internalValue, setInternalValue] = useState<number>(value ?? min);
   const [isRunning, setIsRunning] = useState(false);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const ref = useRef<HTMLDivElement>(null);
-  const intervalRef = useRef<number | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const valueRef = useRef<number>(internalValue);
 
   // Sync external value
@@ -39,7 +39,7 @@ const CursorValue: React.FC<CursorValueProps> = ({
 
   useEffect(() => {
     if (isRunning && direction) {
-      intervalRef.current = window.setInterval(() => {
+      intervalRef.current = setInterval(() => {
         let next =
           direction === "left"
             ? valueRef.current - step
@@ -54,12 +54,12 @@ const CursorValue: React.FC<CursorValueProps> = ({
         }
       }, 50);
     } else if (intervalRef.current !== null) {
-      window.clearInterval(intervalRef.current);
+      clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
 
     return () => {
-      if (intervalRef.current !== null) window.clearInterval(intervalRef.current);
+      if (intervalRef.current !== null) clearInterval(intervalRef.current);
     };
   }, [isRunning, direction, step, min, max, onChange]);
 
@@ -103,6 +103,6 @@ const CursorValue: React.FC<CursorValueProps> = ({
       <div className="cursor-value-value">{internalValue}</div>
     </div>
   );
-};
+}
 
 export default CursorValue;
