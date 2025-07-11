@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import ToggleSwitch from "./toggle-switch";
+import { ToggleSwitch } from "./toggle-switch";
 
 const meta: Meta<typeof ToggleSwitch> = {
   title: "Components/ToggleSwitch",

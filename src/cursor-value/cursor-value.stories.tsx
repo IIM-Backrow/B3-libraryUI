@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import React, { useState } from "react";
-import CursorValue from "./cursor-value";
+import { CursorValue } from "./cursor-value";
 
 const meta: Meta<typeof CursorValue> = {
   title: "Components/CursorValue",

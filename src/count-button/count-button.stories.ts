@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import CountButton from "./count-button";
+import { CountButton } from "./count-button";
 
 const meta: Meta<typeof CountButton> = {
   title: "Components/CountButton",
