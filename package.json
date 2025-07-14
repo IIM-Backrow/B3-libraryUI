@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/IIM-Backrow/B3-libraryUI#readme",
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.7",
+    "@chromatic-com/storybook": "^4.0.1",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
